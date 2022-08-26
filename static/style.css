@@ -34,7 +34,7 @@ body .options .option {
   overflow: hidden;
   min-width: 60px;
   margin: 10px;
-  background: var(--optionBackground);
+  background-color: #e4e4e4;
   background-size: auto 120%;
   background-position: center;
   cursor: pointer;
@@ -48,9 +48,6 @@ body .options .option.active {
   border-radius: 40px;
   background-size: auto 100%;
 }
-body .options .option.active .shadow {
-  box-shadow: inset 0 -120px 120px -120px black, inset 0 -120px 120px -100px black;
-}
 body .options .option.active .label {
   bottom: 20px;
   left: 20px;
@@ -63,10 +60,6 @@ body .options .option:not(.active) {
   flex-grow: 1;
   border-radius: 30px;
 }
-body .options .option:not(.active) .shadow {
-  bottom: -40px;
-  box-shadow: inset 0 -120px 0px -120px black, inset 0 -120px 0px -100px black;
-}
 body .options .option:not(.active) .label {
   bottom: 10px;
   left: 10px;
@@ -75,13 +68,11 @@ body .options .option:not(.active) .label .info > div {
   left: 20px;
   opacity: 0;
 }
-body .options .option .shadow {
+body .options .option .chart {
   position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  height: 120px;
-  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+  width: 100%;
+  height: 100%;
+  transition: 0.5s cubic-bezier(0.1, 0.61, 0.41, 0.95);
 }
 body .options .option .label {
   display: flex;
@@ -90,6 +81,7 @@ body .options .option .label {
   height: 40px;
   transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
 }
+
 body .options .option .label .icon {
   display: flex;
   flex-direction: row;
@@ -99,15 +91,15 @@ body .options .option .label .icon {
   max-width: 40px;
   height: 40px;
   border-radius: 100%;
-  background-color: white;
-  color: #232223;
+  background-color: #232223;
+  color: white;
 }
 body .options .option .label .info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 10px;
-  color: white;
+  color: #232223;
   white-space: pre;
 }
 body .options .option .label .info > div {
