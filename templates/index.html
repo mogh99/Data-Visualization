@@ -19,71 +19,41 @@
   <link rel="icon" href="" type="image/x-icon">
 </head>
 <body>
-<!-- partial:index.partial.html -->
 <div class="options">
+   {% for chart in charts %}
+      {% if loop.index == 1%}
+         <div class="option active">
+            <div class="shadow"></div>
+            <div class="chart" id={{loop.index}}></div>
+            <div class="label">
+               <div class="icon">
+                  <i class="fas {{ chart.Icon_Class }}"></i>
+               </div>
+               <div class="info">
+                  <div class="main">{{ chart.Name }}</div>
+                  <div class="sub">{{ chart.Description }}</div>
+               </div>
+            </div>
+         </div>
+      {% endif %}
+
+      {% if loop.index > 1%}
+         <div class="option">
+            <div class="shadow"></div>
+            <div class="chart" id={{loop.index}}></div>
+            <div class="label">
+               <div class="icon">
+                  <i class="fas {{ chart.Icon_Class }}"></i>
+               </div>
+               <div class="info">
+                  <div class="main">{{ chart.Name }}</div>
+                  <div class="sub">{{ chart.Description }}</div>
+               </div>
+            </div>
+         </div>
+      {% endif %}
+   {% endfor %}
    
-   <div class="option active">
-      <div class="shadow"></div>
-      <div class="chart" id="container"></div>
-      <div class="label">
-         <div class="icon">
-            <i class="fas fa-walking"></i>
-         </div>
-         <div class="info">
-            <div class="main">Main</div>
-            <div class="sub">Sub</div>
-         </div>
-      </div>
-   </div>
-   <div class="option">
-      <div class="shadow"></div>
-      <canvas class="chart" id="bar-chart"></canvas>
-      <div class="label">
-         <div class="icon">
-            <i class="fas fa-snowflake"></i>
-         </div>
-         <div class="info">
-            <div class="main">Main</div>
-            <div class="sub">Sub</div>
-         </div>
-      </div>
-   </div>
-   <div class="option">
-      <div class="shadow"></div>
-      <div class="label">
-         <div class="icon">
-            <i class="fas fa-tree"></i>
-         </div>
-         <div class="info">
-            <div class="main">Main</div>
-            <div class="sub">Sub</div>
-         </div>
-      </div>
-   </div>
-   <div class="option">
-      <div class="shadow"></div>
-      <div class="label">
-         <div class="icon">
-            <i class="fas fa-tint"></i>
-         </div>
-         <div class="info">
-            <div class="main">Main</div>
-            <div class="sub">Sub</div>
-         </div>
-      </div>
-   </div>
-   <div class="option">
-      <div class="shadow"></div>
-      <div class="label">
-         <div class="icon">
-            <i class="fas fa-sun"></i>
-         </div>
-         <div class="info">
-            <div class="main">Main</div>
-            <div class="sub">Sub</div>
-         </div>
-      </div>
-   </div>
 </div>
 
 <!-- partial -->
@@ -93,42 +63,11 @@
 
 <script>
    document.addEventListener('DOMContentLoaded', function () {
-        const chart = Highcharts.chart('container', {
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: 'Fruit Consumption'
-            },
-            xAxis: {
-                categories: ['Apples', 'Bananas', 'Oranges']
-            },
-            yAxis: {
-                title: {
-                    text: 'Fruit eaten'
-                }
-            },
-            series: [{
-                name: 'Jane',
-                data: [1, 0, 4]
-            }, {
-                name: 'John',
-                data: [5, 7, 3]
-            }]
-        });
-    });
-
-    let chart; // globally available
-    document.addEventListener('DOMContentLoaded', function() {
-        chart = Highcharts.stockChart('container', {
-            rangeSelector: {
-                selected: 1
-            },
-            series: [{
-                name: 'USD to EUR',
-           }]
-       });
-    });
+      //Highcharts.chart('ID', chart_json)
+      {% for chart in charts %}
+         Highcharts.chart('{{loop.index}}', {{ chart.Chart_Data|tojson }})
+      {% endfor %}
+   })
 </script>
 
 </body>
