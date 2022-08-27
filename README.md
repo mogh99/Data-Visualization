@@ -1,6 +1,7 @@
 # Data Visualization
-A beginner tutorial to implement a simple data visualization web using `python flask` and `javascript Highcharts`.
+A beginner tutorial to implement a simple data visualization web using `python flask` and `javascript Highcharts`. To add a new chart or modify the current charts look at `charts.py` file.
 
+![](media/Data_Visualization.gif)
 ## Requirements
 The required library to run the repository in your local machine:
 1. [python3](https://www.python.org/downloads/)
